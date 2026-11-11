@@ -1,0 +1,18 @@
+CAFÉ TRAZABLE - versión con sección de suscripción mensual
+
+Contenido:
+- index.html: aplicación web.
+
+Para abrir:
+1. Extrae el ZIP.
+2. Abre index.html en un navegador.
+
+Novedad:
+- Se agregó la pestaña "Planes y suscripción" con tres propuestas mensuales:
+  Básico: $19.900 COP/mes
+  Profesional: $39.900 COP/mes
+  Empresarial: $59.900 COP/mes
+- Los botones de los planes están preparados para abrir enlaces de pago.
+
+IMPORTANTE:
+Esta versión NO procesa pagos reales, no crea cuentas y no bloquea el acceso al vencer una suscripción. Para activar cobros se deben crear los productos recurrentes en Whop, Hotmart o Gumroad y pegar sus enlaces en el objeto checkoutLinks del archivo index.html. Para una venta segura también se necesita autenticación, base de datos central, validación del estado de pago y permisos por usuario. Los datos actuales se guardan localmente en el navegador.

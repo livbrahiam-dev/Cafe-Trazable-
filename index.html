@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Café Trazable</title><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script><style>
+:root{--g:#176b3a;--p:#f2f6f1;--l:#dce5dc;--t:#26352b}*{box-sizing:border-box}body{margin:0;background:var(--p);font:15px Arial;color:var(--t)}header{background:linear-gradient(120deg,#104d2c,#2b8b50);color:white;padding:24px max(20px,calc((100% - 1120px)/2))}header h1{margin:0;font-size:28px}header p{margin:7px 0 0}.wrap{max-width:1120px;margin:22px auto;padding:0 18px}.note,.card,.panel{background:white;border:1px solid var(--l);border-radius:14px;padding:17px;margin-bottom:15px}.note{background:#fff8e8;border-color:#efd99e;color:#705719}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:white;border:1px solid var(--l);border-radius:12px;padding:14px}.stat b{display:block;color:var(--g);font-size:25px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.tab,.btn{border:0;border-radius:9px;padding:11px 14px;cursor:pointer;font-weight:bold}.tab{background:white;color:var(--g);border:1px solid var(--l)}.tab.active,.btn{background:var(--g);color:white}.btn.alt{background:#e8f2e9;color:var(--g)}.btn.red{background:#a9362f}.panel{display:none}.panel.active{display:block}h2{margin:0 0 15px}h3{color:var(--g);margin:16px 0 8px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-weight:bold;font-size:13px}.field input,.field select,.field textarea,.search{padding:11px;border:1px solid #cbd8cc;border-radius:8px;font:inherit;width:100%}.field textarea{min-height:75px}.date-parts{display:grid;grid-template-columns:1fr 1.25fr 1.2fr;gap:6px}.date-parts select{padding:11px 7px;border:1px solid #cbd8cc;border-radius:8px;font:inherit;background:#fff;min-width:0}.help{font-size:12px;color:#68766c;margin-top:2px}.step-title{display:flex;align-items:center;gap:8px;color:var(--g);font-weight:bold;margin:5px 0 12px}.step-number{background:#e4f2e7;border-radius:50%;width:25px;height:25px;display:inline-grid;place-items:center}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.searchrow{display:flex;gap:8px;max-width:650px}.searchrow input{flex:1}table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}th,td{text-align:left;padding:10px;border-bottom:1px solid var(--l)}th{background:#edf4ee;color:#31553a}.tag{background:#e4f2e7;color:var(--g);border-radius:30px;padding:4px 9px;font-size:11px;font-weight:bold}.trace{display:grid;grid-template-columns:1fr 1fr;gap:12px}.trace>div{background:#f9fcf9;border:1px solid var(--l);padding:13px;border-radius:10px}.qrrow{display:flex;align-items:center;gap:22px;flex-wrap:wrap}.qrbox{border:1px dashed #9ab69f;padding:8px;min-width:166px;min-height:166px;display:grid;place-items:center}.small{font-size:12px;color:#68766c}footer{max-width:1120px;margin:25px auto;padding:0 18px 25px;color:#68766c;font-size:12px}@media(max-width:700px){.grid,.stats,.trace{grid-template-columns:1fr}.searchrow{flex-direction:column}table{display:block;overflow-x:auto}}@media print{header,.tabs,.note,.no-print,footer{display:none!important}.panel{display:block!important;border:0}.wrap{max-width:none}}
+
+.roadmap{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+.roadmap th{background:#20547e;color:#fff}
+.roadmap td,.roadmap th{border:1px solid #cbd5df;padding:13px;vertical-align:top}
+.roadmap a{color:#176b3a;font-weight:bold;text-decoration:none}
+.roadmap a:hover{text-decoration:underline}
+.roadmap td:first-child{font-weight:bold;min-width:145px}
+
+:root{
+ --g:#24543b;--p:#f5f1e8;--l:#e4d8c6;--t:#2e2922;
+ --coffee:#4a2f22;--gold:#d6a64b;--cream:#fffaf0;--leaf:#71936b
+}
+body{
+ background:
+ radial-gradient(circle at 8% 12%,rgba(214,166,75,.12),transparent 24rem),
+ radial-gradient(circle at 94% 35%,rgba(113,147,107,.12),transparent 26rem),
+ #f5f1e8;
+ color:var(--t);font-family: "Trebuchet MS",Arial,sans-serif
+}
+header{
+ position:relative;overflow:hidden;
+ background:linear-gradient(115deg,#1d3e2d 0%,#285b3e 52%,#7b5634 100%);
+ padding:30px max(20px,calc((100% - 1120px)/2)) 34px;
+ box-shadow:0 8px 24px #38241620
+}
+header:before,header:after{
+ content:"";position:absolute;border-radius:50%;pointer-events:none;
+ border:2px solid #ffffff20;transform:rotate(-28deg)
+}
+header:before{width:230px;height:310px;right:8%;top:-125px;box-shadow:inset 0 0 0 18px #ffffff08,inset 0 0 0 38px #ffffff08}
+header:after{width:125px;height:180px;right:22%;bottom:-130px}
+header h1{font-family:Georgia,serif;font-size:clamp(30px,4vw,43px);letter-spacing:1.5px;text-shadow:0 2px 5px #14271c}
+header p{font-size:14px;letter-spacing:.3px;color:#f5ead6;max-width:650px;line-height:1.6}
+.wrap{margin-top:25px}
+.note{
+ background:linear-gradient(110deg,#fff9e9,#fffdf8);
+ border:1px solid #ead7aa;border-left:5px solid var(--gold);
+ box-shadow:0 5px 18px #52391a0c;line-height:1.6
+}
+.stats{gap:15px}
+.stat{
+ position:relative;overflow:hidden;border:1px solid #e8ddca;
+ border-radius:16px;padding:18px 20px;
+ background:linear-gradient(145deg,#fffefa,#f7f0e3);
+ box-shadow:0 7px 18px #49331b0c;
+ color:#71604d;font-size:12px;font-weight:bold;letter-spacing:.7px
+}
+.stat:after{content:"☕";position:absolute;right:13px;top:8px;font-size:27px;opacity:.12}
+.stat b{font-family:Georgia,serif;font-size:31px;color:var(--g);margin-bottom:3px}
+.tabs{gap:9px;margin:20px 0}
+.tab{
+ border-radius:30px;padding:12px 17px;background:#fffdf8;
+ border:1px solid #e5d8c5;color:#5d4937;
+ box-shadow:0 3px 8px #4b32150a;transition:.2s
+}
+.tab:hover{transform:translateY(-2px);border-color:#b99558}
+.tab.active{background:linear-gradient(120deg,#24543b,#39724d);color:white;border-color:#24543b;box-shadow:0 5px 12px #24543b30}
+.panel,.card{
+ border:1px solid #e7ddcf;border-radius:18px;padding:23px;
+ box-shadow:0 10px 28px #47321b0d;background:#fffefa
+}
+h2{font-family:Georgia,serif;color:var(--coffee);font-size:25px}
+h3{color:var(--g)}
+.step-title{color:#79552f;font-size:15px}
+.step-number{background:#f5e8c9;color:#6b4b24;width:29px;height:29px;font-weight:bold}
+.field label{color:#514334}
+.field input,.field select,.field textarea,.search{
+ border:1px solid #ddcfbb;background:#fffefa;border-radius:10px
+}
+.field input:focus,.field select:focus,.field textarea:focus,.search:focus{
+ outline:3px solid #d9b76a55;border-color:#b58b42
+}
+.btn{background:linear-gradient(120deg,#24543b,#39724d);border-radius:24px;padding:12px 18px;box-shadow:0 4px 10px #24543b20}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.alt{background:#f3ead9;color:#5b452c;box-shadow:none;border:1px solid #e5d5b9}
+.btn.red{background:linear-gradient(120deg,#a9362f,#c65a45)}
+th{background:#e9efe5;color:#31533a}
+td,th{padding:12px 10px}
+.tag{background:#e9f0e4;color:#28583b}
+.trace>div{background:#faf6ed;border-color:#eadfcf}
+.qrbox{background:#fff;border:1px dashed #b99c69;border-radius:13px}
+.roadmap th{background:#28543d}
+.roadmap td{background:#fffdf8}
+footer{color:#897b68}
+@media(max-width:700px){
+ header{padding:24px 18px 28px}
+ .panel,.card{padding:16px}
+ .tab{flex:1 1 42%;font-size:12px}
+}
+
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:18px 0}
+.plan{background:#fffdf8;border:1px solid #e4d8c6;border-radius:17px;padding:21px;box-shadow:0 8px 22px #47321b0d;display:flex;flex-direction:column;align-items:flex-start}
+.plan.featured{border:2px solid #c69b4c;transform:translateY(-4px);background:linear-gradient(160deg,#fffdf7,#f7efdd)}
+.plan h3{font-family:Georgia,serif;font-size:23px;margin:13px 0 5px}
+.price{font-family:Georgia,serif;font-weight:bold;font-size:29px;color:#24543b;margin:8px 0}
+.price small{font:13px Arial,sans-serif;color:#776b5d}
+.plan ul{padding-left:20px;line-height:1.9;min-height:150px}
+.plan .btn{margin-top:auto}
+.subscription-info{margin-top:18px}
+@media(max-width:800px){.plans{grid-template-columns:1fr}.plan.featured{transform:none}.plan ul{min-height:0}}
+</style></head><body><header><h1>☕ CAFÉ TRAZABLE</h1><p>DEL CULTIVO A TU TAZA · Registro de lotes · Código QR · Trazabilidad · Simulacro de retiro</p></header><main class="wrap"><div class="note"><b>Aplicación académica:</b> incluye cinco lotes simulados de café. Para empezar: 1) registra el lote, 2) búscalo por su código, 3) consulta su trazabilidad y 4) prueba el simulacro de retiro. Los cambios quedan guardados en este navegador.</div><div class="stats"><div class="stat"><b id="nLots">5</b>LOTE(S) REGISTRADOS</div><div class="stat"><b id="nFarms">5</b>FINCA(S) DE ORIGEN</div><div class="stat"><b id="nClients">5</b>CLIENTE(S) DE DESTINO</div></div><nav class="tabs"><button class="tab active" data-tab="registro">Registro de lotes</button><button class="tab" data-tab="busqueda">Buscar / QR</button><button class="tab" data-tab="traza">Trazabilidad</button><button class="tab" data-tab="retiro">Simulacro de retiro</button><button class="tab" data-tab="suscripcion">Planes y suscripción</button><button class="tab" data-tab="desarrollo">Desarrollo y publicación</button></nav>
+<section id="registro" class="panel active">
+<h2>Registro de lotes de café</h2>
+<p class="help">Completa los datos del café. Los campos con * son obligatorios. Usa un código diferente para cada lote.</p>
+<form id="form">
+<div class="step-title"><span class="step-number">1</span> Identificación del lote</div>
+<div class="grid">
+<div class="field"><label for="code">Código del lote *</label><input id="code" required placeholder="Ej. CAF-2026-006"><span class="help">Es el número único para reconocer este lote.</span></div>
+<div class="field"><label for="farm">Finca de origen *</label><input id="farm" required placeholder="Ej. Finca El Paraíso"><span class="help">Nombre de la finca donde se cosechó el café.</span></div>
+<div class="field"><label for="client">Cliente / destino *</label><input id="client" required placeholder="Ej. Tostadora o cliente"><span class="help">Persona o empresa que recibe el lote.</span></div>
+</div>
+<div class="step-title" style="margin-top:20px"><span class="step-number">2</span> Fechas y proceso</div>
+<div class="grid">
+<div class="field"><label>Fecha de cosecha * <span class="help">(DD / MM / AA)</span></label>
+<div class="date-parts">
+<select id="harvestDay" required aria-label="Día de cosecha"><option value="">DD</option></select>
+<select id="harvestMonth" required aria-label="Mes de cosecha"><option value="">MM</option></select>
+<select id="harvestYear" required aria-label="Año de cosecha"><option value="">AA</option></select>
+</div><span class="help">Día, mes y año en que se recogió el café.</span></div>
+<div class="field"><label for="process">Proceso de beneficio *</label><select id="process" required><option value="">Elige una opción</option><option>Lavado</option><option>Natural (seco)</option><option>Honey (semilavado)</option></select><span class="help">Selecciona cómo fue procesado el café.</span></div>
+<div class="field"><label>Fecha de despacho * <span class="help">(DD / MM / AA)</span></label>
+<div class="date-parts">
+<select id="dispatchDay" required aria-label="Día de despacho"><option value="">DD</option></select>
+<select id="dispatchMonth" required aria-label="Mes de despacho"><option value="">MM</option></select>
+<select id="dispatchYear" required aria-label="Año de despacho"><option value="">AA</option></select>
+</div><span class="help">Día, mes y año en que se envió al cliente.</span></div>
+</div>
+<div class="actions"><button class="btn" type="submit">Guardar lote</button><button type="reset" class="btn alt">Limpiar formulario</button></div>
+</form>
+<h3>Lotes registrados</h3><p class="help">Aquí aparecen los lotes guardados. Puedes eliminarlos si ingresaste uno por error.</p>
+<div style="overflow:auto"><table><thead><tr><th>Código</th><th>Finca</th><th>Cosecha</th><th>Beneficio</th><th>Despacho</th><th>Cliente</th><th>Acción</th></tr></thead><tbody id="rows"></tbody></table></div>
+</section>
+<section id="busqueda" class="panel"><h2>Buscar lote y generar código QR</h2><p class="small">Busca por código, finca o cliente.</p><div class="searchrow no-print"><input id="query" class="search" placeholder="Ej. CAF-2026-001"><button class="btn" id="find">Buscar</button></div><div id="found"></div></section>
+<section id="traza" class="panel"><h2>Reporte de trazabilidad hacia atrás y hacia adelante</h2><div class="grid no-print" style="grid-template-columns:2fr 1fr"><div class="field"><label>Selecciona el lote</label><select id="traceSelect"></select></div><div class="field" style="justify-content:end"><button class="btn" id="makeTrace">Generar reporte</button></div></div><div id="traceReport"></div></section>
+<section id="retiro" class="panel"><h2>Simulacro de retiro de producto</h2><p>Selecciona un lote y simula un incidente para identificar su origen y el cliente al que se despachó.</p><div class="grid no-print" style="grid-template-columns:2fr 1fr"><div class="field"><label>Lote involucrado</label><select id="recallSelect"></select></div><div class="field"><label>Motivo</label><select id="reason"><option>Alerta de calidad</option><option>Posible contaminación</option><option>Error de identificación o etiquetado</option><option>Solicitud preventiva del cliente</option></select></div></div><div class="field no-print" style="margin-top:12px"><label>Descripción del incidente</label><textarea id="detail" placeholder="Describe el motivo del simulacro..."></textarea></div><div class="actions no-print"><button class="btn red" id="runRecall">Ejecutar simulacro</button></div><div id="recallReport"></div></section>
+<section id="suscripcion" class="panel">
+<h2>Suscripción mensual a CAFÉ TRAZABLE</h2>
+<p>Elige el plan que mejor se adapte al tamaño de tu operación. Los valores están expresados en pesos colombianos (COP) y se cobrarían cada mes cuando se conecte una pasarela de pago.</p>
+<div class="plans">
+ <article class="plan"><span class="tag">INICIAL</span><h3>Básico</h3><div class="price">$19.900 <small>/ mes</small></div><ul><li>Registro de lotes</li><li>Búsqueda por código, finca o cliente</li><li>Consulta de información del lote</li></ul><button class="btn plan-btn" data-plan="basico">Elegir Básico</button></article>
+ <article class="plan featured"><span class="tag">MÁS COMPLETO</span><h3>Profesional</h3><div class="price">$39.900 <small>/ mes</small></div><ul><li>Todo lo incluido en Básico</li><li>Generación de códigos QR</li><li>Trazabilidad hacia atrás y adelante</li><li>Reportes imprimibles</li></ul><button class="btn plan-btn" data-plan="profesional">Elegir Profesional</button></article>
+ <article class="plan"><span class="tag">EMPRESAS</span><h3>Empresarial</h3><div class="price">$59.900 <small>/ mes</small></div><ul><li>Todo lo incluido en Profesional</li><li>Simulacro de retiro de producto</li><li>Orientación prioritaria de uso</li><li>Preparado para gestión de varios usuarios (requiere backend)</li></ul><button class="btn plan-btn" data-plan="empresarial">Elegir Empresarial</button></article>
+</div>
+<div class="card subscription-info"><h3>¿Cómo se contrata?</h3><ol><li>Selecciona un plan mensual.</li><li>Se abrirá el enlace de pago seguro cuando el administrador configure el producto en la plataforma de pagos.</li><li>Después de confirmar el pago, el administrador debe habilitar la cuenta del cliente.</li></ol><p class="small"><b>Estado actual:</b> esta sección presenta los planes, pero todavía no procesa pagos ni bloquea el acceso por falta de pago. Para activar cobros reales se deben crear los planes en Whop, Hotmart o Gumroad, pegar aquí los enlaces de pago y conectar una base de datos con inicio de sesión y validación de suscripciones.</p></div>
+</section>
+<section id="desarrollo" class="panel">
+<h2>Desarrollo, ejecución, publicación y venta de CAFÉ TRAZABLE</h2>
+<p>Ruta de trabajo del proyecto con las etapas, herramientas y objetivos indicados en la guía.</p>
+<div style="overflow-x:auto">
+<table class="roadmap">
+<thead><tr><th>Etapa</th><th>Herramienta sugerida</th><th>Para qué sirve</th></tr></thead>
+<tbody>
+<tr><td>Diseño y código</td><td>Asistentes de IA: <a href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>, <a href="https://claude.ai/" target="_blank" rel="noopener">Claude</a>, <a href="https://gemini.google.com/" target="_blank" rel="noopener">Gemini</a> o <a href="https://copilot.microsoft.com/" target="_blank" rel="noopener">Copilot</a>.</td><td>Generar y mejorar el código, los formularios y los textos de la aplicación a partir de la descripción del problema de trazabilidad de lotes de café.</td></tr>
+<tr><td>Ejecución local</td><td><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> o un editor de texto.</td><td>Abrir y ejecutar el archivo en el computador, probar el registro de lotes, la búsqueda, los códigos QR y los reportes; corregir errores antes de compartirlo.</td></tr>
+<tr><td>Repositorio</td><td><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>.</td><td>Guardar, versionar y compartir el código del proyecto. Añadir un archivo README que explique qué hace la aplicación, cómo ejecutarla y sus limitaciones.</td></tr>
+<tr><td>Publicación</td><td><a href="https://streamlit.io/cloud" target="_blank" rel="noopener">Streamlit Community Cloud</a> (aplicaciones Python) o <a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a> / <a href="https://vercel.com/" target="_blank" rel="noopener">Vercel</a> (páginas web).</td><td>Publicar la aplicación para abrirla mediante un enlace desde distintos dispositivos. Esta versión está hecha en HTML, CSS y JavaScript; Netlify o Vercel son opciones más directas. Para Streamlit habría que adaptarla a Python.</td></tr>
+<tr><td>Venta</td><td><a href="https://whop.com/" target="_blank" rel="noopener">Whop</a>; alternativas: <a href="https://gumroad.com/" target="_blank" rel="noopener">Gumroad</a> o <a href="https://hotmart.com/" target="_blank" rel="noopener">Hotmart</a>.</td><td>Vender el acceso mediante tres planes de suscripción mensual: Básico ($19.900 COP), Profesional ($39.900 COP) y Empresarial ($59.900 COP). Los cobros se activan al configurar los enlaces de pago y el control de usuarios.</td></tr>
+</tbody></table></div>
+<div class="card">
+<h3>Pasos recomendados para este proyecto</h3>
+<ol>
+<li>Probar el registro de los cinco lotes simulados y crear un lote nuevo.</li>
+<li>Verificar la búsqueda por código, la generación de QR, la trazabilidad hacia atrás y hacia adelante, y el simulacro de retiro.</li>
+<li>Guardar el archivo de la aplicación y un README en un repositorio de GitHub.</li>
+<li>Publicar la versión web en Netlify o Vercel. Streamlit requiere convertir el proyecto a Python.</li>
+<li>Configurar los enlaces de pago de los planes mensuales y conectar usuarios, permisos, base de datos y copias de seguridad antes de vender el acceso.</li>
+</ol>
+<p class="small"><b>Importante:</b> el prototipo guarda los datos en el almacenamiento local del navegador. No sincroniza automáticamente la información entre distintos usuarios o dispositivos. La suscripción mostrada es una propuesta comercial; todavía no cobra ni restringe el acceso automáticamente.</p>
+</div>
+<div class="actions no-print"><button class="btn alt" onclick="window.print()">Imprimir ruta de trabajo</button></div>
+</section>
+</main><footer>CAFÉ TRAZABLE · Prototipo académico con ruta de diseño, ejecución local, repositorio, publicación y venta. Los datos iniciales son simulados y no representan operaciones reales.</footer>
+<script>
+const initial=[
+{code:'CAF-2026-001',farm:'Finca El Roble',harvest:'2026-10-02',process:'Lavado',dispatch:'2026-10-12',client:'Tostadora Montaña'},
+{code:'CAF-2026-002',farm:'Finca La Esperanza',harvest:'2026-10-04',process:'Natural (seco)',dispatch:'2026-10-14',client:'Café Origen S.A.S.'},
+{code:'CAF-2026-003',farm:'Finca El Paraíso',harvest:'2026-10-07',process:'Honey (semilavado)',dispatch:'2026-10-17',client:'Comercializadora Andina'},
+{code:'CAF-2026-004',farm:'Finca La Primavera',harvest:'2026-10-09',process:'Lavado',dispatch:'2026-10-19',client:'Cafés Especiales del Quindío'},
+{code:'CAF-2026-005',farm:'Finca San Miguel',harvest:'2026-10-11',process:'Natural (seco)',dispatch:'2026-10-21',client:'Distribuciones Aroma'}];
+
+function fillDateSelects(){
+ const months=[['01','Enero'],['02','Febrero'],['03','Marzo'],['04','Abril'],['05','Mayo'],['06','Junio'],['07','Julio'],['08','Agosto'],['09','Septiembre'],['10','Octubre'],['11','Noviembre'],['12','Diciembre']];
+ ['harvest','dispatch'].forEach(prefix=>{
+  const day=$(prefix+'Day'), month=$(prefix+'Month'), year=$(prefix+'Year');
+  for(let d=1;d<=31;d++)day.add(new Option(String(d).padStart(2,'0'),String(d).padStart(2,'0')));
+  months.forEach(([v,n])=>month.add(new Option(n+' ('+v+')',v)));
+  for(let y=2020;y<=2035;y++)year.add(new Option(String(y).slice(-2),String(y)));
+ });
+}
+function getDate(prefix){
+ const d=$(prefix+'Day').value,m=$(prefix+'Month').value,y=$(prefix+'Year').value;
+ if(!d||!m||!y)return '';
+ const fullYear=Number(y), month=Number(m), day=Number(d);
+ const maxDay=new Date(fullYear,month,0).getDate();
+ if(day>maxDay)return 'INVALID';
+ return `${fullYear}-${m}-${d}`;
+}
+
+let lots=JSON.parse(localStorage.getItem('cafeTrazable')||'null')||initial.slice();const $=id=>document.getElementById(id);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fmt=s=>s?new Date(s+'T00:00:00').toLocaleDateString('es-CO'):'—';const save=()=>localStorage.setItem('cafeTrazable',JSON.stringify(lots));
+function refresh(){$('nLots').textContent=lots.length;$('nFarms').textContent=new Set(lots.map(x=>x.farm)).size;$('nClients').textContent=new Set(lots.map(x=>x.client)).size;$('rows').innerHTML=lots.map((l,i)=>`<tr><td><b>${esc(l.code)}</b></td><td>${esc(l.farm)}</td><td>${fmt(l.harvest)}</td><td>${esc(l.process)}</td><td>${fmt(l.dispatch)}</td><td>${esc(l.client)}</td><td><button class="btn alt" onclick="delLot(${i})">Eliminar</button></td></tr>`).join('')||'<tr><td colspan="7">No hay lotes.</td></tr>';['traceSelect','recallSelect'].forEach(id=>$(id).innerHTML=lots.map(l=>`<option value="${esc(l.code)}">${esc(l.code)}</option>`).join(''));}
+window.delLot=i=>{if(confirm('¿Eliminar este lote?')){lots.splice(i,1);save();refresh()}};
+$('form').addEventListener('submit',e=>{e.preventDefault();let harvest=getDate('harvest'),dispatch=getDate('dispatch');if(harvest==='INVALID'||dispatch==='INVALID')return alert('Revisa la fecha: el día no existe en el mes seleccionado.');if(!harvest||!dispatch)return alert('Selecciona día, mes y año en las dos fechas.');let l={code:$('code').value.trim().toUpperCase(),farm:$('farm').value.trim(),harvest,process:$('process').value,dispatch,client:$('client').value.trim()};if(lots.some(x=>x.code===l.code))return alert('El código ya existe. Usa uno único.');if(l.dispatch<l.harvest)return alert('El despacho no puede ser anterior a la cosecha.');lots.push(l);save();refresh();e.target.reset();alert('Lote guardado correctamente.');});
+function showLot(l){let payload=JSON.stringify(l);$('found').innerHTML=`<div class="card"><div class="qrrow"><div><span class="tag">LOTE ENCONTRADO</span><h3>${esc(l.code)}</h3><p><b>Finca:</b> ${esc(l.farm)}<br><b>Cosecha:</b> ${fmt(l.harvest)}<br><b>Beneficio:</b> ${esc(l.process)}<br><b>Despacho:</b> ${fmt(l.dispatch)}<br><b>Cliente:</b> ${esc(l.client)}</p></div><div><div class="qrbox" id="qr"></div><p class="small">Código QR del lote</p></div></div><button class="btn alt no-print" onclick="print()">Imprimir ficha / QR</button></div>`;if(window.QRCode)new QRCode($('qr'),{text:payload,width:150,height:150});else $('qr').textContent='Conéctate a internet para generar el QR.';}
+$('find').onclick=()=>{let q=$('query').value.trim().toLowerCase();if(!q){$('found').textContent='Escribe un criterio de búsqueda.';return}let a=lots.filter(l=>[l.code,l.farm,l.client].some(v=>v.toLowerCase().includes(q)));if(!a.length){$('found').textContent='No se encontraron lotes.';return}if(a.length===1){showLot(a[0]);return}$('found').innerHTML=a.map(l=>`<div class="card"><b>${esc(l.code)}</b> · ${esc(l.farm)} · ${esc(l.client)} <button class="btn alt" onclick="pickLot('${esc(l.code)}')">Ver QR</button></div>`).join('')};window.pickLot=c=>showLot(lots.find(l=>l.code===c));
+$('makeTrace').onclick=()=>{let l=lots.find(x=>x.code===$('traceSelect').value);if(!l)return;$('traceReport').innerHTML=`<div class="card"><span class="tag">REPORTE DE TRAZABILIDAD</span><h3>Lote ${esc(l.code)}</h3><div class="trace"><div><h3>HACIA ATRÁS · ORIGEN</h3><b>Finca:</b> ${esc(l.farm)}<br><b>Fecha de cosecha:</b> ${fmt(l.harvest)}<br><b>Proceso de beneficio:</b> ${esc(l.process)}<p class="small">Identifica de dónde proviene el café y qué proceso recibió.</p></div><div><h3>HACIA ADELANTE · DESTINO</h3><b>Fecha de despacho:</b> ${fmt(l.dispatch)}<br><b>Cliente:</b> ${esc(l.client)}<br><b>Código:</b> ${esc(l.code)}<p class="small">Identifica a quién se despachó el lote y cuándo salió.</p></div></div><p><b>Resultado:</b> los datos registrados relacionan el lote desde la finca de origen hasta el cliente.</p><button class="btn alt no-print" onclick="print()">Imprimir reporte</button></div>`};
+$('runRecall').onclick=()=>{let l=lots.find(x=>x.code===$('recallSelect').value);if(!l)return;let d=$('detail').value.trim()||'Sin detalle adicional.';$('recallReport').innerHTML=`<div class="card" style="border-left:5px solid #a9362f"><span class="tag" style="background:#fae8e6;color:#a9362f">SIMULACRO · NO ES UN RETIRO REAL</span><h3>Simulacro de retiro: ${esc(l.code)}</h3><b>Motivo:</b> ${esc($('reason').value)}<br><b>Descripción:</b> ${esc(d)}<h3>Ruta de localización</h3><ol><li><b>Finca:</b> ${esc(l.farm)} — cosecha ${fmt(l.harvest)}.</li><li><b>Beneficio:</b> ${esc(l.process)}.</li><li><b>Despacho:</b> ${fmt(l.dispatch)}.</li><li><b>Cliente a contactar:</b> ${esc(l.client)}.</li></ol><b>Acciones propuestas:</b><ul><li>Identificar y bloquear preventivamente las existencias del lote.</li><li>Contactar al cliente y confirmar cantidades recibidas y disponibles.</li><li>Registrar cantidades localizadas, recuperadas y pendientes.</li><li>Documentar responsables, tiempos y cierre del simulacro.</li></ul><b>Conclusión:</b> con los datos disponibles se identifica el origen y el destino del lote. Para un retiro real debe activarse el procedimiento aprobado.<p><button class="btn alt no-print" onclick="print()">Imprimir acta</button></p></div>`};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab).classList.add('active')});
+// Pega en cada campo el enlace de pago generado por tu proveedor (Whop, Hotmart o Gumroad).
+// Mientras esté vacío, el botón informa que el pago aún no está configurado.
+const checkoutLinks={basico:'',profesional:'',empresarial:''};
+const planNames={basico:'Básico',profesional:'Profesional',empresarial:'Empresarial'};
+document.querySelectorAll('.plan-btn').forEach(btn=>btn.addEventListener('click',()=>{const plan=btn.dataset.plan;const url=checkoutLinks[plan];if(url){window.open(url,'_blank','noopener');}else{alert('Seleccionaste el plan '+planNames[plan]+'. El enlace de pago mensual todavía no está configurado. El administrador debe crear este plan en Whop, Hotmart o Gumroad y pegar aquí su enlace de pago para recibir cobros reales.');}}));
+fillDateSelects();refresh();
+</script></body></html>
